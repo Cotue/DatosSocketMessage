@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\X\\source\\repos\\Socket Datos\\Socket Datos\\Socket Datos.csproj",
+      "projectUniqueName": "C:\\Users\\X\\Documents\\DatosSocketMessage\\Socket Datos\\Socket Datos\\Socket Datos.csproj",
       "projectName": "Socket Datos",
-      "projectPath": "C:\\Users\\X\\source\\repos\\Socket Datos\\Socket Datos\\Socket Datos.csproj",
+      "projectPath": "C:\\Users\\X\\Documents\\DatosSocketMessage\\Socket Datos\\Socket Datos\\Socket Datos.csproj",
       "packagesPath": "C:\\Users\\X\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\X\\source\\repos\\Socket Datos\\Socket Datos\\obj\\",
+      "outputPath": "C:\\Users\\X\\Documents\\DatosSocketMessage\\Socket Datos\\Socket Datos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\X\\AppData\\Roaming\\NuGet\\NuGet.Config",
