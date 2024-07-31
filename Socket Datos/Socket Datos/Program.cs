@@ -20,7 +20,7 @@ namespace SocketMessage
             Thread.Sleep(1000);
 
             Client client = new Client();
-            client.Start_client();
+            client.client();
         }
 
         static void StartServer()
