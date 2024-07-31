@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Timers;
 using System.Threading;
+using System.Net.Http.Headers;
 namespace SocketMessage
 {
     public class Program
@@ -20,15 +21,15 @@ namespace SocketMessage
             Thread.Sleep(1000);
 
             Client client = new Client();
-            client.client();
-        }
+            client.sclient();
 
         static void StartServer()
         {
             Server server = new Server();
-            server.server();
+            server.Start();
         }
 
         
     }
+}
 }
