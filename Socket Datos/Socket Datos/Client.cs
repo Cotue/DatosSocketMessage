@@ -1,37 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+
 namespace SocketMessage
 {
-    public class Client
+    class Client
     {
-        public void client()
+        public void sclient()
         {
             Socket listen = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint connect = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 6400);
+            IPEndPoint connect = new IPEndPoint(IPAddress.Parse("192.168.0.107"), 6400);
             listen.Connect(connect);
-
-            while (true)
-            {
-                Console.WriteLine("Ingrese mensaje (o 'exit' para salir):");
-                string message = Console.ReadLine();
-
-                if (message.ToLower() == "exit")
-                    break;
-
-                byte[] sendinfo = Encoding.Default.GetBytes(message);
-                listen.Send(sendinfo);
-            }
-
-            listen.Shutdown(SocketShutdown.Both);
-            listen.Close();
+            byte[] sendinfo = new byte[100];
+            string message;
+            Console.WriteLine("Ingrese mensaje");
+            message = Console.ReadLine();
+            sendinfo = Encoding.Default.GetBytes(message);
+            listen.Send(sendinfo);
             Console.ReadKey();
         }
     }
-    
- 
 }

@@ -1,43 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace SocketMessage
 {
-    public class Server
+    class Server
     {
-        public void server()
+        public void Start()
         {
-            Socket listen = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint connect = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 6400);
-            listen.Bind(connect);
-            listen.Listen(10);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 6400);
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-            Console.WriteLine("Servidor en espera de conexiones...");
+            socket.Bind(endPoint);
+            socket.Listen(10);
 
-            while (true)
-            {
-                Socket conexion = listen.Accept();
-                Console.WriteLine("Conexión aceptada");
+            Console.WriteLine("Esperando conexión...");
 
-                byte[] getinfo = new byte[20000];
-                int array_size = conexion.Receive(getinfo, 0, getinfo.Length, 0);
+            Socket clientSocket = socket.Accept();
+            Console.WriteLine("Cliente conectado");
 
-                if (array_size > 0)
-                {
-                    Array.Resize(ref getinfo, array_size);
-                    string message = Encoding.Default.GetString(getinfo);
-                    Console.WriteLine("La info recibida es: {0}", message);
-                }
+            byte[] buffer = new byte[1024];
+            int receivedDataLength = clientSocket.Receive(buffer);
 
-                conexion.Shutdown(SocketShutdown.Both);
-               
-                Console.ReadKey();
-            }
+            string receivedMessage = Encoding.Default.GetString(buffer, 0, receivedDataLength);
+            Console.WriteLine("Mensaje recibido: " + receivedMessage);
+
+            clientSocket.Close();
+            socket.Close();
         }
     }
 }
+
